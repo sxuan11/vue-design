@@ -17,7 +17,7 @@ jobs:
     # 执行依赖安装
     - name: 安装依赖
       run: |
-          npm ci
+          npm i
 
     # 执行构建步骤
     - name: 构建
