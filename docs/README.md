@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 actionText: 开始阅读 
-actionLink: /art/
+actionLink: /
 features:
 - title: 超级详细 - 逐行级别的分析
   details: 所谓逐行并非一行接着一行，逐行指的是讲解的详细程度，这套文章将致力于覆盖所有核心代码，我们致力于讲清楚每一句代码的意义，否则又怎么敢说是源码分析呢？
