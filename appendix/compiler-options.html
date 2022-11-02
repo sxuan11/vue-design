@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>编译器选项</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.935432c2.css" as="style"><link rel="preload" href="/assets/js/app.b9a97f68.js" as="script"><link rel="preload" href="/assets/js/2.eeb24f79.js" as="script"><link rel="preload" href="/assets/js/11.754df99e.js" as="script"><link rel="prefetch" href="/assets/js/10.97c08b20.js"><link rel="prefetch" href="/assets/js/12.9906099b.js"><link rel="prefetch" href="/assets/js/13.727dacc1.js"><link rel="prefetch" href="/assets/js/14.90991ed7.js"><link rel="prefetch" href="/assets/js/15.c5e3ba8f.js"><link rel="prefetch" href="/assets/js/16.779424b6.js"><link rel="prefetch" href="/assets/js/17.5a45c978.js"><link rel="prefetch" href="/assets/js/18.a55ebab0.js"><link rel="prefetch" href="/assets/js/19.0c0a1f65.js"><link rel="prefetch" href="/assets/js/20.6d9d6c78.js"><link rel="prefetch" href="/assets/js/21.b9be0204.js"><link rel="prefetch" href="/assets/js/22.d1f92331.js"><link rel="prefetch" href="/assets/js/23.06fbaa56.js"><link rel="prefetch" href="/assets/js/24.d77e8648.js"><link rel="prefetch" href="/assets/js/25.22273496.js"><link rel="prefetch" href="/assets/js/26.992d4402.js"><link rel="prefetch" href="/assets/js/27.611c0f35.js"><link rel="prefetch" href="/assets/js/28.d598ff88.js"><link rel="prefetch" href="/assets/js/29.1008fc5b.js"><link rel="prefetch" href="/assets/js/3.ecde2497.js"><link rel="prefetch" href="/assets/js/30.91fb66e6.js"><link rel="prefetch" href="/assets/js/31.7db43188.js"><link rel="prefetch" href="/assets/js/32.5e32c72b.js"><link rel="prefetch" href="/assets/js/33.58289e5e.js"><link rel="prefetch" href="/assets/js/34.6086cce6.js"><link rel="prefetch" href="/assets/js/35.0e0efc82.js"><link rel="prefetch" href="/assets/js/36.e3b02a17.js"><link rel="prefetch" href="/assets/js/37.1aa3da42.js"><link rel="prefetch" href="/assets/js/38.a9eb92cd.js"><link rel="prefetch" href="/assets/js/39.32910999.js"><link rel="prefetch" href="/assets/js/4.f876ad59.js"><link rel="prefetch" href="/assets/js/5.18c5236f.js"><link rel="prefetch" href="/assets/js/6.e86df8f9.js"><link rel="prefetch" href="/assets/js/7.775ed6e5.js"><link rel="prefetch" href="/assets/js/8.f3e38271.js"><link rel="prefetch" href="/assets/js/9.d69388c2.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.935432c2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="编译器选项"><a href="#编译器选项" class="header-anchor">#</a> 编译器选项</h1> <p>该部分内容整理了 <code>Vue</code> 的编译器所接收的选项参数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  shouldDecodeNewlines<span class="token punctuation">,</span>
+  shouldDecodeNewlinesForHref<span class="token punctuation">,</span>
+  delimiters<span class="token punctuation">,</span>
+  comments<span class="token punctuation">,</span>
+  warn<span class="token punctuation">,</span>  <span class="token comment">// 被 delete</span>
+
+  <span class="token comment">// baseOptions</span>
+  expectHTML<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      staticKeys<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'staticClass'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      transformNode<span class="token punctuation">,</span>
+      genData
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      staticKeys<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'staticStyle'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      transformNode<span class="token punctuation">,</span>
+      genData
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      preTransformNode
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  directives<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    model<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    html<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    text<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  isPreTag<span class="token punctuation">,</span>
+  isUnaryTag<span class="token punctuation">,</span>
+  mustUseProp<span class="token punctuation">,</span>
+  canBeLeftOpenTag<span class="token punctuation">,</span>
+  isReservedTag<span class="token punctuation">,</span>
+  getTagNamespace<span class="token punctuation">,</span>
+  staticKeys<span class="token punctuation">:</span> <span class="token function">genStaticKeys</span><span class="token punctuation">(</span>modules<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">warn</span> <span class="token operator">=</span> <span class="token punctuation">(</span>msg<span class="token punctuation">,</span> tip<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span>tip <span class="token operator">?</span> tips <span class="token punctuation">:</span> errors<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.b9a97f68.js" defer></script><script src="/assets/js/2.eeb24f79.js" defer></script><script src="/assets/js/11.754df99e.js" defer></script>
+  </body>
+</html>
