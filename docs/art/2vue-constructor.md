@@ -340,7 +340,7 @@ initGlobalAPI(Vue)
 那 `Vue.config` 的值是什么呢？在 `src/core/global-api/index.js` 文件的开头有这样一句：
 
 ```js
-import config from '../config'
+import config from './config'
 ```
 
 所以 `Vue.config` 代理的是从 `core/config.js` 文件导出的对象。
