@@ -14,15 +14,6 @@ jobs:
       with:
         persist-credentials: false
 
-    # 执行依赖安装
-    - name: 安装依赖
-      run: |
-          npm i
-
-    # 执行构建步骤
-    - name: 构建
-      run: |
-          npm run build
     # 执行部署
     - name: 部署
       uses: JamesIves/github-pages-deploy-action@releases/v3

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue 实例的设计</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.935432c2.css" as="style"><link rel="preload" href="/assets/js/app.b9a97f68.js" as="script"><link rel="preload" href="/assets/js/2.eeb24f79.js" as="script"><link rel="preload" href="/assets/js/15.c5e3ba8f.js" as="script"><link rel="prefetch" href="/assets/js/10.97c08b20.js"><link rel="prefetch" href="/assets/js/11.754df99e.js"><link rel="prefetch" href="/assets/js/12.9906099b.js"><link rel="prefetch" href="/assets/js/13.727dacc1.js"><link rel="prefetch" href="/assets/js/14.90991ed7.js"><link rel="prefetch" href="/assets/js/16.779424b6.js"><link rel="prefetch" href="/assets/js/17.5a45c978.js"><link rel="prefetch" href="/assets/js/18.a55ebab0.js"><link rel="prefetch" href="/assets/js/19.0c0a1f65.js"><link rel="prefetch" href="/assets/js/20.6d9d6c78.js"><link rel="prefetch" href="/assets/js/21.b9be0204.js"><link rel="prefetch" href="/assets/js/22.d1f92331.js"><link rel="prefetch" href="/assets/js/23.06fbaa56.js"><link rel="prefetch" href="/assets/js/24.d77e8648.js"><link rel="prefetch" href="/assets/js/25.22273496.js"><link rel="prefetch" href="/assets/js/26.992d4402.js"><link rel="prefetch" href="/assets/js/27.611c0f35.js"><link rel="prefetch" href="/assets/js/28.d598ff88.js"><link rel="prefetch" href="/assets/js/29.1008fc5b.js"><link rel="prefetch" href="/assets/js/3.ecde2497.js"><link rel="prefetch" href="/assets/js/30.91fb66e6.js"><link rel="prefetch" href="/assets/js/31.7db43188.js"><link rel="prefetch" href="/assets/js/32.5e32c72b.js"><link rel="prefetch" href="/assets/js/33.58289e5e.js"><link rel="prefetch" href="/assets/js/34.6086cce6.js"><link rel="prefetch" href="/assets/js/35.0e0efc82.js"><link rel="prefetch" href="/assets/js/36.e3b02a17.js"><link rel="prefetch" href="/assets/js/37.1aa3da42.js"><link rel="prefetch" href="/assets/js/38.a9eb92cd.js"><link rel="prefetch" href="/assets/js/39.32910999.js"><link rel="prefetch" href="/assets/js/4.f876ad59.js"><link rel="prefetch" href="/assets/js/5.18c5236f.js"><link rel="prefetch" href="/assets/js/6.e86df8f9.js"><link rel="prefetch" href="/assets/js/7.775ed6e5.js"><link rel="prefetch" href="/assets/js/8.f3e38271.js"><link rel="prefetch" href="/assets/js/9.d69388c2.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.935432c2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue-实例的设计"><a href="#vue-实例的设计" class="header-anchor">#</a> Vue 实例的设计</h1> <p>这里是对 <code>Vue</code> 实例的整理，有利于我们直观地观察 <code>Vue</code></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// Vue.prototype._init</span>
+vm<span class="token punctuation">.</span>_uid <span class="token operator">=</span> uid<span class="token operator">++</span>     <span class="token comment">// 每个Vue实例都拥有一个唯一的 id</span>
+vm<span class="token punctuation">.</span>_isVue <span class="token operator">=</span> <span class="token boolean">true</span>    <span class="token comment">// 这个表示用于避免Vue实例对象被观测(observed)</span>
+vm<span class="token punctuation">.</span>$options         <span class="token comment">// 当前 Vue 实例的初始化选项，注意：这是经过 mergeOptions() 后的</span>
+vm<span class="token punctuation">.</span>_renderProxy <span class="token operator">=</span> vm    <span class="token comment">// 渲染函数作用域代理</span>
+vm<span class="token punctuation">.</span>_self <span class="token operator">=</span> vm       <span class="token comment">// 实例本身</span>
+
+<span class="token comment">// initLifecycle(vm)    src/core/instance/lifecycle.js **************************************************</span>
+vm<span class="token punctuation">.</span>$parent <span class="token operator">=</span> parent
+vm<span class="token punctuation">.</span>$root <span class="token operator">=</span> parent <span class="token operator">?</span> parent<span class="token punctuation">.</span>$root <span class="token punctuation">:</span> vm
+
+vm<span class="token punctuation">.</span>$children <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+vm<span class="token punctuation">.</span>$refs <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+vm<span class="token punctuation">.</span>_watcher <span class="token operator">=</span> <span class="token keyword">null</span>
+vm<span class="token punctuation">.</span>_inactive <span class="token operator">=</span> <span class="token keyword">null</span>
+vm<span class="token punctuation">.</span>_directInactive <span class="token operator">=</span> <span class="token boolean">false</span>
+vm<span class="token punctuation">.</span>_isMounted <span class="token operator">=</span> <span class="token boolean">false</span>
+vm<span class="token punctuation">.</span>_isDestroyed <span class="token operator">=</span> <span class="token boolean">false</span>
+vm<span class="token punctuation">.</span>_isBeingDestroyed <span class="token operator">=</span> <span class="token boolean">false</span>
+
+<span class="token comment">// initEvents(vm)   src/core/instance/events.js **************************************************</span>
+vm<span class="token punctuation">.</span>_events <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+vm<span class="token punctuation">.</span>_hasHookEvent <span class="token operator">=</span> <span class="token boolean">false</span>
+
+<span class="token comment">// initRender(vm)   src/core/instance/render.js **************************************************</span>
+vm<span class="token punctuation">.</span>_vnode <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment">// the root of the child tree</span>
+vm<span class="token punctuation">.</span>_staticTrees <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment">// v-once cached trees</span>
+
+vm<span class="token punctuation">.</span>$vnode
+vm<span class="token punctuation">.</span>$slots
+vm<span class="token punctuation">.</span>$scopedSlots
+
+vm<span class="token punctuation">.</span>_c
+vm<span class="token punctuation">.</span>$createElement
+
+vm<span class="token punctuation">.</span>$attrs
+vm<span class="token punctuation">.</span>$listeners
+
+<span class="token comment">// initState(vm)   src/core/instance/state.js **************************************************</span>
+vm<span class="token punctuation">.</span>_watchers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+vm<span class="token punctuation">.</span>_data
+
+<span class="token comment">// mountComponent()   src/core/instance/lifecycle.js</span>
+vm<span class="token punctuation">.</span>$el
+
+<span class="token comment">// initComputed()   src/core/instance/state.js</span>
+vm<span class="token punctuation">.</span>_computedWatchers <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+
+<span class="token comment">// initProps()    src/core/instance/state.js</span>
+vm<span class="token punctuation">.</span>_props <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// initProvide()    src/core/instance/inject.js</span>
+vm<span class="token punctuation">.</span>_provided
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.b9a97f68.js" defer></script><script src="/assets/js/2.eeb24f79.js" defer></script><script src="/assets/js/15.c5e3ba8f.js" defer></script>
+  </body>
+</html>
